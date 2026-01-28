@@ -1,23 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileTreatment.h                                    :+:      :+:    :+:   */
+/*   programHeaders.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 13:57:41 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/28 14:28:39 by adlopez-         ###   ########.fr       */
+/*   Created: 2026/01/28 17:30:03 by adlopez-          #+#    #+#             */
+/*   Updated: 2026/01/28 17:54:57 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "programHeaders.h"
 
-# include <sys/mman.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <sys/stat.h>
-# include <stdbool.h>
-
-void    *readFile(char *argv);
-bool    formatCheck(char *argv);

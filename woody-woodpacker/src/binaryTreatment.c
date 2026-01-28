@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileTreatment.c                                    :+:      :+:    :+:   */
+/*   binaryTreatment.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:57:19 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/28 14:28:41 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/28 17:56:12 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fileTreatment.h"
+#include "binaryTreatment.h"
 
 void    *readFile(char *path) {
     int     fd = open(path, O_RDONLY);
@@ -34,7 +34,7 @@ void    *readFile(char *path) {
 para lo cual usare mmap, un mapa simple el cual necesita
 de un fileDescriptor con el archivo abierto y su tamanho */
 
-bool    formatCheck(char *path) {
+bool    binaryFormatChecks(char *path) {
     int fd = open(path, O_RDWR);
     if (fd < 0) {
         return false;
@@ -52,3 +52,12 @@ bool    formatCheck(char *path) {
 /* para separar errores mas que nada entre invalid input
 y fallo de la funcion mmap, primero compruebo que el archivo
 sea legible y medible */
+
+off_t   fileSize(char *path) {
+    int fd = open(path, O_RDONLY);
+    off_t   size = lseek(fd, 0, SEEK_END);
+    lseek(fd, 0, SEEK_SET);
+    return (size);
+}
+/* no hay otra que extraer el size del file descriptor, necesario
+para liberar memoria del mapa */
