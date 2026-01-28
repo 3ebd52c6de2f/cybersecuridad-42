@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:57:19 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/28 14:25:42 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/28 14:28:41 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,6 @@ bool    formatCheck(char *path) {
     close(fd);
     return true;
 }
+/* para separar errores mas que nada entre invalid input
+y fallo de la funcion mmap, primero compruebo que el archivo
+sea legible y medible */
