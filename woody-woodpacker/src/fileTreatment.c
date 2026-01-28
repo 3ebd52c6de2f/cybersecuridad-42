@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fileTreatment.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/28 13:57:19 by adlopez-          #+#    #+#             */
+/*   Updated: 2026/01/28 14:25:42 by adlopez-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fileTreatment.h"
+
+void    *readFile(char *path) {
+    int     fd = open(path, O_RDONLY);
+
+    off_t   size = lseek(fd, 0, SEEK_END);
+    lseek(fd, 0, SEEK_SET);
+
+    void    *map = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0);
+    /* las flags hacen referencia a la capacidad de leer/escribir sobre el archivo
+    y el private marca que no se modificara el archivo original */
+    if (map == MAP_FAILED) {
+        close(fd);
+        return NULL;
+    }
+    close(fd);
+
+    return (map);
+}
+
+/* lo primero que he de hacer es cargar el archivo
+para lo cual usare mmap, un mapa simple el cual necesita
+de un fileDescriptor con el archivo abierto y su tamanho */
+
+bool    formatCheck(char *path) {
+    int fd = open(path, O_RDWR);
+    if (fd < 0) {
+        return false;
+    }
+
+    off_t size = lseek(fd, 0, SEEK_END);
+    if (size <= 0) {
+        close(fd);
+        return false;
+    }
+
+    close(fd);
+    return true;
+}
