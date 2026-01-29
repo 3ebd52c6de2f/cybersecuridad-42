@@ -6,11 +6,31 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:09:17 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/28 18:04:29 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/29 12:12:09 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "elfHeaderTreatment.h"
+
+elf64_program_header_map    *findLoadExec(elf64_program_header_map *ph, size_t size) {
+    size_t  id = 0;
+    while (id < size) {
+        if (isLoadable(&ph[id]) && isExecutable(&ph[id]))
+            return &ph[id];
+        id++;
+    }
+    return NULL;
+}
+
+elf64_program_header_map    *findLastLoad(elf64_program_header_map *ph, size_t size) {
+    size_t  id = size - 1;
+    while (id != 0) {
+        if (isLoadable(&ph[id]))
+            return &ph[id];
+        id--;
+    }
+    return NULL;
+}
 
 bool    elfhBasicChecks(void *map, off_t size) {
     unsigned char *chamanism = (unsigned char *)map;

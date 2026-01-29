@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:30:31 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/28 17:54:24 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/29 12:12:05 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
+
+# define PT_NULL            0
+# define PT_LOAD            1
+# define PT_DYNAMIC         2
+# define PT_INTERP          3
+# define PT_NOTE            4
+# define PT_PHDR            6
+
+# define PF_X               0x1
+# define PF_W               0x2
+# define PF_R               0x4
+
+# define PT_GNU_STACK       0x6474e551
+# define PT_GNU_RELRO       0x6474e552
+# define PT_GNU_EH_FRAME    0x6474e550
 
 typedef struct {
     __uint32_t    ph_type; // tipo de segmento [LOAD, INTERP, DYNAMIC...]
@@ -28,3 +43,8 @@ typedef struct {
     __uint64_t    ph_align; // no lo termino de entender pero innecesario por ahora
 }   elf64_program_header_map;
 /* estructura que contiene cada uno de los program headers */
+
+bool    isLoadable(elf64_program_header_map *ph);
+bool    isReadable(elf64_program_header_map *ph);
+bool    isExecutable(elf64_program_header_map *ph);
+bool    isWritable(elf64_program_header_map *ph);
