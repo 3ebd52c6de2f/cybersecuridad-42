@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:09:17 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 12:12:09 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:48:10 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ elf64_program_header_map    *findLoadExec(elf64_program_header_map *ph, size_t s
 }
 
 elf64_program_header_map    *findLastLoad(elf64_program_header_map *ph, size_t size) {
-    size_t  id = size - 1;
-    while (id != 0) {
-        if (isLoadable(&ph[id]))
-            return &ph[id];
-        id--;
+    if (!ph || size == 0)
+        return NULL;
+    size_t  idx = size;
+    while (idx-- > 0) {
+        if (isLoadable(&ph[idx]))
+            return (&ph[idx]);
     }
     return NULL;
 }

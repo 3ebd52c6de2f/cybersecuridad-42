@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:57:19 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 12:12:12 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/29 14:44:13 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,24 @@ off_t   fileSize(char *path) {
 }
 /* no hay otra que extraer el size del file descriptor, necesario
 para liberar memoria del mapa */
+
+void    ft_error(int id, void *allocated) {
+    if (id == 0) {
+        printf("error: invalid file input.\n");
+        exit(1);
+    }
+    if (id == 1) {
+        perror("mmap failed");
+        exit(1);
+    }
+    if (id == 2) {
+        printf("error: invalid ELF64 format file.\n");
+        exit(1);
+    }
+    if (id == 3) {
+        printf("error: no executable LOAD segment found.\n");
+        exit(1);
+    }
+    (void)allocated;
+}
+// error handler

@@ -6,11 +6,12 @@
 #    By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/28 13:35:18 by adlopez-          #+#    #+#              #
-#    Updated: 2026/01/28 18:01:31 by adlopez-         ###   ########.fr        #
+#    Updated: 2026/01/29 16:38:00 by adlopez-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	src/main.c src/programHeaders.c src/elfHeaderTreatment.c src/binaryTreatment.c
+SRCS	=	src/main.c src/programHeaders.c src/elfHeaderTreatment.c \
+			src/binaryTreatment.c src/debug.c src/criptography.c
 NAME	=	woody_woodpacker
 
 sample:

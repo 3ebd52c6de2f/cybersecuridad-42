@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binaryTreatment.h                                  :+:      :+:    :+:   */
+/*   criptography.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 13:57:41 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 15:38:38 by adlopez-         ###   ########.fr       */
+/*   Created: 2026/01/29 16:37:19 by adlopez-          #+#    #+#             */
+/*   Updated: 2026/01/29 16:37:21 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,4 @@
 # include <stdbool.h>
 # include <stdlib.h>
 
-void    *readFile(char *argv);
-bool    binaryFormatChecks(char *argv);
-off_t   fileSize(char *path);
-bool    basicChecks(void *map, off_t size);
-void    ft_error(int id, void *allocated);
+void    rc4cript(__uint8_t *initialPtr, size_t size, const __uint8_t secretKey[], size_t keylen);

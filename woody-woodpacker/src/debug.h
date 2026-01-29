@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binaryTreatment.h                                  :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 13:57:41 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 15:38:38 by adlopez-         ###   ########.fr       */
+/*   Created: 2026/01/29 16:15:53 by adlopez-          #+#    #+#             */
+/*   Updated: 2026/01/29 16:17:32 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+# include "elfHeaderTreatment.h"
+# include "programHeaders.h"
 # include <sys/mman.h>
+# include <sys/stat.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdio.h>
-# include <sys/stat.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <stdlib.h>
 
-void    *readFile(char *argv);
-bool    binaryFormatChecks(char *argv);
-off_t   fileSize(char *path);
-bool    basicChecks(void *map, off_t size);
-void    ft_error(int id, void *allocated);
+void printProgramHeaders(elf64_program_header_map *ph, size_t count);
+void printSegment(const char *title, __uint8_t *ptr, size_t size);

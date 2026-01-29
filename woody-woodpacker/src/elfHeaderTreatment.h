@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:09:40 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 12:12:08 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/29 15:37:21 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,5 @@ typedef struct {
 
 bool    elfhBasicChecks(void *map, off_t size);
 bool    elfhFormatChecks(elf64_header_map *header, off_t size);
+elf64_program_header_map    *findLoadExec(elf64_program_header_map *ph, size_t size);
+elf64_program_header_map    *findLastLoad(elf64_program_header_map *ph, size_t size);
