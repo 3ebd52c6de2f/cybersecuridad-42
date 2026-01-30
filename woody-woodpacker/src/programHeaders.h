@@ -6,12 +6,13 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:30:31 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/30 12:02:46 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:07:40 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 # include "binaryTreatment.h"
+# include <string.h>
 # include <sys/mman.h>
 # include <sys/stat.h>
 # include <fcntl.h>

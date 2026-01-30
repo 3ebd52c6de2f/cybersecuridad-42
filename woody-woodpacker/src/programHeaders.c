@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:30:03 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/30 12:02:40 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:15:59 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline off_t align(off_t v, off_t a) {
 
 void    stubSegmentInit(elf64_program_header_map *ptr, elf64_program_header_map *last) {
     ptr->ph_type = PT_LOAD; // tipo load
-    ptr->ph_flags = PF_R | PF_W | PF_X; // permisos a full
+    ptr->ph_flags = PF_R | PF_X; // permisos a full
     ptr->ph_align = 0x1000;
     
     off_t firstFreeValue = last->ph_offset + last->ph_filesz;

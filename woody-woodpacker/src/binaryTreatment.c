@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:57:19 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 14:44:13 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:22:51 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,25 @@ off_t   fileSize(char *path) {
 para liberar memoria del mapa */
 
 void    ft_error(int id, void *allocated) {
-    if (id == 0) {
+    if (id == 0)
         printf("error: invalid file input.\n");
-        exit(1);
-    }
-    if (id == 1) {
+    if (id == 1)
         perror("mmap failed");
-        exit(1);
-    }
-    if (id == 2) {
+    if (id == 2)
         printf("error: invalid ELF64 format file.\n");
-        exit(1);
-    }
-    if (id == 3) {
+    if (id == 3)
         printf("error: no executable LOAD segment found.\n");
-        exit(1);
-    }
+    if (id == 4)
+        printf("error: unable to open stub.bin.\n");
+    if (id == 5)
+        printf("error: void stub.bin.\n");
+    if (id == 6)
+        printf("error: unable to read stub.bin.\n");
+    if (id == 7)
+        printf("error: can't create 'woody' file.\n");
+    if (id == 8)
+        printf("error: can't write on 'woody' file.\n");
+    exit(1);
     (void)allocated;
 }
 // error handler

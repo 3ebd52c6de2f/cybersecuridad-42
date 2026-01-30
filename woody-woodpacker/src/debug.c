@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 16:15:41 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 16:17:36 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 16:12:06 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,14 @@ void printSegment(const char *title, __uint8_t *ptr, size_t size) {
 
     if (size > 128)
         printf("... (%zu bytes more)\n", size - 128);
+}
+
+void printStub(__uint8_t *ptr, size_t size)
+{
+    size_t i;
+
+    printf("=== STUB BYTES ===\n");
+    for (i = 0; i < size && i < 2000; i++)
+        printf("%02x ", ptr[i]);
+    printf("\n==================\n");
 }
