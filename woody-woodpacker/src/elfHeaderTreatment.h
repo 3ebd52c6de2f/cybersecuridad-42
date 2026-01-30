@@ -6,13 +6,12 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:09:40 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 15:37:21 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:01:30 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include "elfHeaderTreatment.h"
 # include "programHeaders.h"
 # include <sys/mman.h>
 # include <sys/stat.h>

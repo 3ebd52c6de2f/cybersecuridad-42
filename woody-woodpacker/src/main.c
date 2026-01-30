@@ -6,7 +6,7 @@
 /*   By: adlopez- <adloprub004@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 13:37:49 by adlopez-          #+#    #+#             */
-/*   Updated: 2026/01/29 16:38:17 by adlopez-         ###   ########.fr       */
+/*   Updated: 2026/01/30 12:05:04 by adlopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,27 @@ int main(int argc, char **argv) {
     size_t      iepSize = executable->ph_filesz;
     // busco el primer byte ejecutable y el tamanho del segmento
     
-    printSegment("SEGMENTO ANTES", initExecPtr, iepSize);
-
     const __uint8_t *key = (const __uint8_t *)"patata";
     rc4cript(initExecPtr, iepSize, key, 6);
     // cifro el segmento
 
-    printSegment("SEGMENTO DESPUES", initExecPtr, iepSize);
-
+    elf64_program_header_map *stubSegment = &programHeaders[header->elf_phnum];
+    stubSegmentInit(stubSegment, lastLoad);
+    header->elf_phnum + 1;
     // stub cosas
-
 
     (void)og_entrypoint;
 
     return (0);
 }
 
-/* FLUJO FUTURO 
+/* Funcionamiento de "woody" (mi export)
 
-+ parseao elf 
-+ encontrar un LOAD con permisos de ejecucion
-- encryptar .text RC4
-- inyectar el stub
-- arreglar el entrypoint
-
-
-RC4 es un algoritmo simetrico (misma funcion para ambos sentidos)
-utiliza un array de 256 bytes y 2 index
+    - entrypoint apunta al STUB
+    - el STUB imprime ....WOODY....
+    - el STUB descifra el contenido cifrado (antiguo codigo ejec)
+    - el STUB redirige el entrypoint al entrypoint original (example)
+    
+    Dando como resultado un archivo cifrado hasta el momento
+    de su ejecucion con un mensaje
 */
